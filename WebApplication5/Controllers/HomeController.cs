@@ -1,31 +1,68 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication5.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace WebApplication5.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    ApplicationContext Db;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ApplicationContext context)
     {
-        _logger = logger;
+        
+
+        {
+            Db = context;
+
+
+
+
+            if (!Db.Shops.Any())
+            {
+                shop shop1 = new shop
+                {
+                    Name = "uplay", Price = 1, Keys = "123abc"
+                };
+                Db.Shops.AddRange(shop1);
+                Db.SaveChanges();
+            }
+
+
+        }
+    }
+
+    public IActionResult AddKey()
+    {
+        var shop = Db.Shops.ToList();
+        return View();
+    }
+    [HttpPost]
+    public Task <IActionResult> AddKey(shop shop)
+    {
+        Db.AddRange(shop);
+        Db.SaveChanges();
+        return Task.FromResult<IActionResult>(RedirectToAction("addkey"));
     }
 
     public IActionResult Index()
-    {
-        return View();
+        {
+            var shops = Db.Shops.ToList();
+            return View(shops);
+
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
-}
