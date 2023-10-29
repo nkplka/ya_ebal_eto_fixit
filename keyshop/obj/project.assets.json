@@ -2890,11 +2890,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nkpl\\RiderProjects\\keyshop\\keyshop\\keyshop.csproj",
+      "projectUniqueName": "C:\\Users\\nkpl\\RiderProjects\\ya_ebal_eto_fixit\\keyshop\\keyshop.csproj",
       "projectName": "keyshop",
-      "projectPath": "C:\\Users\\nkpl\\RiderProjects\\keyshop\\keyshop\\keyshop.csproj",
+      "projectPath": "C:\\Users\\nkpl\\RiderProjects\\ya_ebal_eto_fixit\\keyshop\\keyshop.csproj",
       "packagesPath": "C:\\Users\\nkpl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nkpl\\RiderProjects\\keyshop\\keyshop\\obj\\",
+      "outputPath": "C:\\Users\\nkpl\\RiderProjects\\ya_ebal_eto_fixit\\keyshop\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nkpl\\AppData\\Roaming\\NuGet\\NuGet.Config"

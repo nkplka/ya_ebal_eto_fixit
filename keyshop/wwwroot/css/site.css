@@ -19,4 +19,16 @@ html {
 
 body {
   margin-bottom: 60px;
+  background: linear-gradient(45deg, rgb(195, 154, 207), rgb(86, 181, 184));
+  background-size: 200% 200%;
+  animation: gradientAnimation 10s ease infinite;
 }
+
+@keyframes gradientAnimation {
+  25% {
+    background-position: 25% 50%;
+  }
+  50% {
+    background-position: 50% 25%;
+  }
+} 

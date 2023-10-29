@@ -37,7 +37,8 @@ public class HomeController : Controller
 
     public IActionResult AddKey()
     {
-        var shop = Db.Shops.ToList();
+        var shop= Db.Shops.ToList();
+        ViewBag.data = shop;
         return View();
     }
     [HttpPost]
@@ -47,7 +48,14 @@ public class HomeController : Controller
         Db.SaveChanges();
         return Task.FromResult<IActionResult>(RedirectToAction("AddKey"));
     }
+    
+    public IActionResult Catalog()
+    {
+        var shops = Db.Shops.ToList();
+        return View(shops);
 
+    }
+    
     public IActionResult Index()
         {
             var shops = Db.Shops.ToList();
@@ -61,4 +69,5 @@ public class HomeController : Controller
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+
 
